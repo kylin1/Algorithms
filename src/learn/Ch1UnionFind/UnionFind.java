@@ -1,4 +1,4 @@
-package Ch1UnionFind;
+package learn.Ch1UnionFind;
 
 /**
  * Created by kylin on 25/05/2017.

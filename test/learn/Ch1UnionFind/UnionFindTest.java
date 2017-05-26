@@ -1,4 +1,4 @@
-package Ch1UnionFind;
+package learn.Ch1UnionFind;
 
 import org.junit.Test;
 
