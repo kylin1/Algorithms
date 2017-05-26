@@ -41,9 +41,6 @@ public class No130SurroundedRegions {
 
         // 遍历棋盘
         for (int i = 0; i < n; i++) {
-            if (i == n - 1) {
-                int x = 3;
-            }
 
             for (int j = 0; j < m; j++) {
                 if (board[i][j] != 'O') {
