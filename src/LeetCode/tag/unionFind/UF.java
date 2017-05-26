@@ -9,18 +9,15 @@ package LeetCode.tag.unionFind;
  */
 class UF {
 
-    private int[] id;
-    private int[] size;
+    private int[] id, size;
     private int count;
 
     public UF(int count) {
         this.count = count;
-
         id = new int[count];
         size = new int[count];
         for (int i = 0; i < count; i++) {
             id[i] = i;
-            size[i] = 1;
         }
     }
 
@@ -46,6 +43,8 @@ class UF {
 
     public int find(int p) {
         while (p != id[p]) {
+            // path compression by halving
+            id[p] = id[id[p]];
             p = id[p];
         }
         return p;
