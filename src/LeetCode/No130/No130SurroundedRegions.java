@@ -1,4 +1,4 @@
-package LeetCode;
+package LeetCode.No130;
 
 import MyUtil.MyPrint;
 
@@ -15,11 +15,11 @@ public class No130SurroundedRegions {
     public static void main(String[] args) {
         No130SurroundedRegions regions = new No130SurroundedRegions();
         char[][] board = {
-                {'O', 'X', 'X', 'O', 'X', },
-                {'X', 'O', 'O', 'X', 'O', },
-                {'X', 'O', 'X', 'O', 'X', },
-                {'O', 'X', 'O', 'O', 'O', },
-                {'X', 'X', 'O', 'X', 'O', },
+                {'O', 'X', 'X', 'O', 'X',},
+                {'X', 'O', 'O', 'X', 'O',},
+                {'X', 'O', 'X', 'O', 'X',},
+                {'O', 'X', 'O', 'O', 'O',},
+                {'X', 'X', 'O', 'X', 'O',},
         };
         MyPrint.print(board);
         regions.solve(board);
@@ -122,13 +122,12 @@ class UF {
             return;
         }
 
-        if(size[i] < size[j]){
-            id[i] = j;
-            size[j] += size[i];
-        }else {
-            id[j] = i;
-            size[i] += size[j];
-        }
+        int bigger = size[i] > size[j] ? i : j;
+        int smaller = i + j - bigger;
+
+        id[smaller] = bigger;
+        size[bigger] += size[smaller];
+
         count--;
     }
 
