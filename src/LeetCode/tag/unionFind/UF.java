@@ -42,12 +42,19 @@ class UF {
     }
 
     public int find(int p) {
-        while (p != id[p]) {
-            // path compression by halving
-            id[p] = id[id[p]];
-            p = id[p];
+        // find the root node of p
+        int pParent = p;
+        while(id[pParent]!=pParent){
+            pParent=id[pParent];
         }
-        return p;
+
+        // link all node in the path directly to the root
+        while(id[p]!= p){
+            p=id[p];
+            id[p]=pParent;
+        }
+
+        return pParent;
     }
 
     public int count() {
