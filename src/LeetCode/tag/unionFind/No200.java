@@ -29,10 +29,6 @@ public class No200 {
         System.out.println(result);
     }
 
-    private boolean isInMap(int i, int j, int n, int m) {
-        return (i >= 0 && i <= n - 1 && j >= 0 && j <= m - 1);
-    }
-
     public int numIslands(char[][] grid) {
         int n = grid.length;
         if (n == 0) {
@@ -40,7 +36,6 @@ public class No200 {
         }
         int m = grid[0].length;
         int numOfSea = 0;
-
         UF uf = new UF(n * m);
 
         for (int i = 0; i < n; i++) {
@@ -48,27 +43,18 @@ public class No200 {
                 // connect all land together
                 if (grid[i][j] == '1') {
                     int thisNode = i * m + j;
-                    int iVariance[] = { 1, 0};
-                    int jVariance[] = { 0, 1};
-                    // 4 adjacent node index
-                    for (int k = 0; k < 2; k++) {
-                        int iIndex = i + iVariance[k];
-                        int jIndex = j + jVariance[k];
-                        int adjacentNode = iIndex * m + jIndex;
-                        if (isInMap(iIndex, jIndex, n, m) && grid[iIndex][jIndex] == '1') {
-                            uf.union(adjacentNode, thisNode);
-                        }
-                    }
+                    // i+1,j
+                    if (i + 1 < n && grid[i + 1][j] == '1')
+                        uf.union((i + 1) * m + j, thisNode);
+                    // i,j+1
+                    if (j + 1 < m && grid[i][j + 1] == '1')
+                        uf.union(i * m + j + 1, thisNode);
                     // one grid of sea
                 } else {
                     numOfSea++;
                 }
             }
         }
-
-        int numOfConn = uf.count();
-
-        return numOfConn - numOfSea;
+        return uf.count() - numOfSea;
     }
-
 }
