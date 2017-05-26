@@ -15,10 +15,11 @@ public class No130SurroundedRegions {
     public static void main(String[] args) {
         No130SurroundedRegions regions = new No130SurroundedRegions();
         char[][] board = {
-                {'X', 'O', 'X', 'O', 'X', 'O',},
-                {'O', 'X', 'O', 'X', 'O', 'X',},
-                {'X', 'O', 'X', 'O', 'X', 'O',},
-                {'O', 'X', 'O', 'X', 'O', 'X',},
+                {'O', 'X', 'X', 'O', 'X', },
+                {'X', 'O', 'O', 'X', 'O', },
+                {'X', 'O', 'X', 'O', 'X', },
+                {'O', 'X', 'O', 'O', 'O', },
+                {'X', 'X', 'O', 'X', 'O', },
         };
         MyPrint.print(board);
         regions.solve(board);
@@ -51,8 +52,8 @@ public class No130SurroundedRegions {
                 int thisNode = i * m + j;
 
                 // 如果是边界上的'O',则将它连接到伪造的一个点上,代表与边界相连
-                if (isOnBoundary(i, j, n, m)) {
-                    uf.union(thisNode, dummyNode);
+                if (i == 0 || i == n - 1 || j == 0 || j == m - 1) {
+                    uf.union(dummyNode, thisNode);
 
                     // 如果是棋盘里面的0,将它连接到自己上下左右四个0上
                 } else {
@@ -65,7 +66,7 @@ public class No130SurroundedRegions {
                         int adjacentNode = iIndex * m + jIndex;
                         // if in map and is 'O', union this node and its adjacent node
                         if (isInMap(iIndex, jIndex, n, m) && board[iIndex][jIndex] == 'O') {
-                            uf.union(thisNode, adjacentNode);
+                            uf.union(adjacentNode, thisNode);
                         }
                     }
                 }
@@ -82,19 +83,6 @@ public class No130SurroundedRegions {
                 }
             }
         }
-    }
-
-
-    /**
-     * is[i,j] on the boundary of [n * m]
-     *
-     * @param i
-     * @param j
-     * @param n
-     * @param m
-     */
-    private boolean isOnBoundary(int i, int j, int n, int m) {
-        return (i == 0 || i == n - 1 || j == 0 || j == m - 1);
     }
 
     private boolean isInMap(int i, int j, int n, int m) {
@@ -131,30 +119,24 @@ class UF {
     }
 
     public void union(int p, int q) {
-        int proot = find(p);
-        int qroot = find(q);
-
-        if (proot == qroot) {
+        int i = find(p);
+        int j = find(q);
+        if (i == j) {
             return;
         }
 
-        int psize = size[proot];
-        int qsize = size[qroot];
-
-        if (qsize > psize) {
-            // q is bigger
-            id[p] = qroot;
-            size[q] += psize;
-        } else {
-            id[q] = proot;
-            size[p] += qsize;
+        if(size[i] < size[j]){
+            id[i] = j;
+            size[j] += size[i];
+        }else {
+            id[j] = i;
+            size[i] += size[j];
         }
-
         count--;
     }
 
     public int find(int p) {
-        while (id[p] != p) {
+        while (p != id[p]) {
             p = id[p];
         }
         return p;

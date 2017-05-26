@@ -25,32 +25,31 @@ public class WeighedQuickUnion extends UnionFind {
         }
     }
 
-    @Override
-    public int find(int p) {
-        // return root node of p
-        while (id[p] != p)
-            p = id[p];
-        return p;
-    }
-
-    @Override
     public void union(int p, int q) {
-        int proot = find(p);
-        int qroot = find(q);
-
-        if(proot == qroot){
+        int i = find(p);
+        int j = find(q);
+        if (i == j) {
             return;
         }
 
-        // get smaller and bigger one
-        int smaller = size[proot] < size[qroot]? proot : qroot;
-        int bigger = proot + qroot - smaller;
-
-        // link smaller tree to bigger one
-        id[smaller] = bigger;
-        size[bigger] += size[smaller];
-
-        // number of union decrease
+        if(size[i] < size[j]){
+            id[i] = j;
+            size[j] += size[i];
+        }else {
+            id[j] = i;
+            size[i] += size[j];
+        }
         count--;
+    }
+
+    public int find(int p) {
+        while (p != id[p]) {
+            p = id[p];
+        }
+        return p;
+    }
+
+    public int count() {
+        return count;
     }
 }
