@@ -27,5 +27,11 @@ public class MyPrint {
         System.out.println();
     }
 
+    public static void print(int[] re) {
+        for (int one:re){
+            System.out.print(one+" ");
+        }
+        System.out.println();
+    }
 
 }
