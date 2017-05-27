@@ -1,9 +1,6 @@
 package learn.sort;
 
-import learn.ch2_sort.InsertSort;
-import learn.ch2_sort.SelectSort;
-import learn.ch2_sort.ShellSort;
-import learn.ch2_sort.Sort;
+import learn.ch2_sort.*;
 import myutil.MyPrint;
 import org.junit.Test;
 
@@ -39,6 +36,24 @@ public class SortTest {
         Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
         Sort sort = new ShellSort();
         sort.sort(input);
+        MyPrint.print(input);
+        assertTrue(sort.isSorted(input));
+    }
+
+    @Test
+    public void testMergeSort(){
+        Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
+        Sort sort = new MergeSort();
+        sort.sort(input);
+        MyPrint.print(input);
+        assertTrue(sort.isSorted(input));
+    }
+
+    @Test
+    public void testMergeSortButtomUp(){
+        Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
+        MergeSort sort = new MergeSort();
+        sort.sortBottomUp(input);
         MyPrint.print(input);
         assertTrue(sort.isSorted(input));
     }
