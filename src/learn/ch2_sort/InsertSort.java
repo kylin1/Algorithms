@@ -29,6 +29,7 @@ public class InsertSort extends Sort {
             // i = 1, j = 1, less(a[1],a[0]) : change them so a[0]<a[1]
             // i = 2, j = 2, a[2]<a[1], j=1, a[1]<a[0]
             // i = 3, j = 3, 3<2, 2<1, 1<0
+            // 插入a[i] 至  i 到 1 的范围
             for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }

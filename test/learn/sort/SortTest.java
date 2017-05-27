@@ -2,6 +2,7 @@ package learn.sort;
 
 import learn.ch2_sort.InsertSort;
 import learn.ch2_sort.SelectSort;
+import learn.ch2_sort.ShellSort;
 import learn.ch2_sort.Sort;
 import myutil.MyPrint;
 import org.junit.Test;
@@ -28,6 +29,15 @@ public class SortTest {
     public void testInsertSort(){
         Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
         Sort sort = new InsertSort();
+        sort.sort(input);
+        MyPrint.print(input);
+        assertTrue(sort.isSorted(input));
+    }
+
+    @Test
+    public void testShellSort(){
+        Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
+        Sort sort = new ShellSort();
         sort.sort(input);
         MyPrint.print(input);
         assertTrue(sort.isSorted(input));
