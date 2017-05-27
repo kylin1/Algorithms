@@ -1,4 +1,4 @@
-package learn.Ch1UnionFind;
+package learn.ch1_union_find;
 
 /**
  * Created by kylin on 25/05/2017.

@@ -1,4 +1,4 @@
-package LeetCode.tag.unionFind;
+package leetcode.tag.unionfind;
 
 /**
  * Created by kylin on 26/05/2017.

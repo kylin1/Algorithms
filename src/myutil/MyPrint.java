@@ -1,4 +1,4 @@
-package MyUtil;
+package myutil;
 
 /**
  * Created by kylin on 26/05/2017.
@@ -19,4 +19,13 @@ public class MyPrint {
             System.out.println();
         }
     }
+
+    public static void print(Comparable[] re) {
+        for (Comparable one:re){
+            System.out.print(one+" ");
+        }
+        System.out.println();
+    }
+
+
 }

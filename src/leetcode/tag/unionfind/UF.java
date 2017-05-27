@@ -1,4 +1,4 @@
-package LeetCode.tag.unionFind;
+package leetcode.tag.unionfind;
 
 /**
  * 加权UF的实现

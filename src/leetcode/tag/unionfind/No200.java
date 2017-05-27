@@ -1,6 +1,6 @@
-package LeetCode.tag.unionFind;
+package leetcode.tag.unionfind;
 
-import MyUtil.MyPrint;
+import myutil.MyPrint;
 
 /**
  * Created by kylin on 26/05/2017.
