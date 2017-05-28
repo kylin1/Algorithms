@@ -37,6 +37,7 @@ public class No75 {
         int index0 = 0;
         int index2 = nums.length - 1;
         int i = 0;
+        // just like quick sort three way !!!
         while (i <= index2) {
             if (nums[i] == 0) exch(nums, i++, index0++);
                 // important !!! i does not change! 1,2,0->1,0,2 i=still 1 so it get 0

@@ -20,16 +20,17 @@ package learn.ch2_sort;
  */
 public class InsertSort extends Sort {
 
+    // if a[j] < a[j-1], exchange them
+    // i = 1, j = 1, less(a[1],a[0]) : change them so a[0]<a[1]
+    // i = 2, j = 2, a[2]<a[1], j=1, a[1]<a[0]
+    // i = 3, j = 3, 3<2, 2<1, 1<0
+    // 插入a[i] 至  i 到 1 的范围
+
     @Override
     public void sort(Comparable[] a) {
         int N = a.length;
-        // insert a[i] to [0,i-1]
         for (int i = 1; i < N; i++) {
-            // if a[j] < a[j-1], exchange them
-            // i = 1, j = 1, less(a[1],a[0]) : change them so a[0]<a[1]
-            // i = 2, j = 2, a[2]<a[1], j=1, a[1]<a[0]
-            // i = 3, j = 3, 3<2, 2<1, 1<0
-            // 插入a[i] 至  i 到 1 的范围
+            // insert a[i] to [0,i-1]
             for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
                 exch(a, j, j - 1);
             }
