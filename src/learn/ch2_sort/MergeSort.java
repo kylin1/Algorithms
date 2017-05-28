@@ -89,7 +89,7 @@ public class MergeSort extends Sort {
                 // right part is empty, next is left !!!
             else if (index2 > high)
                 next = index1++;
-                // both part is not empty, compare: left is small
+                // both part is not empty, compare: left < right
             else if (less(aux[index1], aux[index2]))
                 next = index1++;
                 // right is small
