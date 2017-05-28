@@ -1,7 +1,5 @@
 package learn.ch2_sort;
 
-import myutil.MyPrint;
-
 /**
  * Created by kylin on 27/05/2017.
  * All rights reserved.
@@ -21,10 +19,15 @@ public class MergeSort extends Sort {
         sort(a, 0, N - 1);
     }
 
+    /**
+     * 自底向上的并归排序
+     *
+     * @param a
+     */
     public void sortBottomUp(Comparable[] a) {
         int N = a.length;
         aux = new Comparable[N];
-        // size = 1,2,4,8,16...
+        // size = 1,2,4,8,16... 从size小的开始排序,先排大小是2的数组...并归,再排大小是4的
         for (int size = 1; size < N; size += size) {
             // size = 1,low = 0,2,4,6,8,...
             // size = 2,low = 0,4,8,12...
@@ -70,7 +73,6 @@ public class MergeSort extends Sort {
      */
     private void merge(Comparable[] a, int low, int middle, int high) {
         // copy from a to aux
-        aux = new Comparable[a.length];
         for (int i = low; i <= high; i++) {
             aux[i] = a[i];
         }
@@ -79,11 +81,12 @@ public class MergeSort extends Sort {
         int index1 = low;
         int index2 = middle + 1;
         int next;
+        // TODO 下面的并归代码自己没写出来!!! 考虑左右都用完的情况!!!
         for (int i = low; i <= high; i++) {
-            // left part is empty, next is right
+            // left part is empty, next is right !!!
             if (index1 > middle)
                 next = index2++;
-                // right part is empty, next is left
+                // right part is empty, next is left !!!
             else if (index2 > high)
                 next = index1++;
                 // both part is not empty, compare: left is small
@@ -96,10 +99,4 @@ public class MergeSort extends Sort {
         }
     }
 
-    public static void main(String[] args) {
-        Integer input[] = {1, 3, 5, 2, 4, 6};
-        MergeSort sort = new MergeSort();
-        sort.merge(input, 0, 2, 5);
-        MyPrint.print(input);
-    }
 }
