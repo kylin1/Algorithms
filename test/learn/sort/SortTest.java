@@ -50,10 +50,28 @@ public class SortTest {
     }
 
     @Test
-    public void testMergeSortButtomUp(){
+    public void testMergeSortBottomUp(){
         Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
         MergeSort sort = new MergeSort();
         sort.sortBottomUp(input);
+        MyPrint.print(input);
+        assertTrue(sort.isSorted(input));
+    }
+
+    @Test
+    public void testQuickSort(){
+        Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
+        Sort sort = new QuickSort();
+        sort.sort(input);
+        MyPrint.print(input);
+        assertTrue(sort.isSorted(input));
+    }
+
+    @Test
+    public void testQuickSort3Way(){
+        Character input[] = {'S','O','T','E','X','A','M','P','L','E',};
+        QuickSort sort = new QuickSort();
+        sort.sort3Way(input);
         MyPrint.print(input);
         assertTrue(sort.isSorted(input));
     }
