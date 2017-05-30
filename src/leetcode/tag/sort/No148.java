@@ -40,18 +40,22 @@ public class No148 {
         ListNode thisNode = newHead;
 
         while (h1 != null || h2 != null) {
+            // left is null, use right
             if (h1 == null) {
                 thisNode.next = h2;
                 thisNode = thisNode.next;
                 h2 = h2.next;
+                // right is null, use left
             } else if (h2 == null) {
                 thisNode.next = h1;
                 thisNode = thisNode.next;
                 h1 = h1.next;
+                // left < right
             } else if (h1.val < h2.val) {
                 thisNode.next = h1;
                 thisNode = thisNode.next;
                 h1 = h1.next;
+                // left >= right
             } else {
                 thisNode.next = h2;
                 thisNode = thisNode.next;
