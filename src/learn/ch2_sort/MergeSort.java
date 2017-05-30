@@ -63,7 +63,7 @@ public class MergeSort extends Sort {
     }
 
     /**
-     * 原地归并,将两个数组[low,mid],[mid+1,high]
+     * 原地归并,将一个数组的两部分[low,mid],[mid+1,high]
      * 按顺序合并到一个数字[low,high]中
      *
      * @param a
@@ -89,12 +89,13 @@ public class MergeSort extends Sort {
                 // right part is empty, next is left !!!
             else if (index2 > high)
                 next = index1++;
-                // both part is not empty, compare: left < right
+                // both part is not empty, compare: left < right, use index1
             else if (less(aux[index1], aux[index2]))
                 next = index1++;
-                // right is small
+                // left >= right, use index2
             else
                 next = index2++;
+            // set a[i] = next element
             a[i] = aux[next];
         }
     }

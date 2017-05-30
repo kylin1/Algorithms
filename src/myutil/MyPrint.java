@@ -6,9 +6,9 @@ package myutil;
  */
 public class MyPrint {
 
-    public static void print(char[][] board){
+    public static void print(char[][] board) {
         int n = board.length;
-        if(n == 0){
+        if (n == 0) {
             return;
         }
         int m = board[0].length;
@@ -21,17 +21,21 @@ public class MyPrint {
     }
 
     public static void print(Comparable[] re) {
-        for (Comparable one:re){
-            System.out.print(one+" ");
+        for (Comparable one : re) {
+            System.out.print(one + " ");
         }
         System.out.println();
     }
 
     public static void print(int[] re) {
-        for (int one:re){
-            System.out.print(one+" ");
+        for (int one : re) {
+            System.out.print(one + " ");
         }
         System.out.println();
+    }
+
+    public static void check(String name, Object value) {
+        System.out.println(name + " = " + value);
     }
 
 }

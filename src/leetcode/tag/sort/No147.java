@@ -1,5 +1,8 @@
 package leetcode.tag.sort;
 
+import myutil.ListNode;
+import myutil.MyList;
+
 /**
  * Created by kylin on 28/05/2017.
  * All rights reserved.
@@ -9,24 +12,14 @@ package leetcode.tag.sort;
 public class No147 {
 
     public static void main(String[] args) {
-        ListNode n5 = new ListNode(5);
-        ListNode n4 = new ListNode(4);
-        ListNode n3 = new ListNode(3);
-        ListNode n2 = new ListNode(2);
-        ListNode n1 = new ListNode(1);
-
-        n5.next = n4;
-        n4.next = n3;
-        n3.next = n2;
-        n2.next = n1;
-
+        int array[] = {5,4,2,1,3,6,8,7,9};
         No147 x = new No147();
-        ListNode node = x.insertionSortList(n5);
+        ListNode list = MyList.getListFromArray(array);
 
-        while (node != null) {
-            System.out.println(node.val);
-            node = node.next;
-        }
+        ListNode newList = x.insertionSortList(list);
+
+        MyList.printList(newList);
+        System.out.println(MyList.isSorted(newList));
     }
 
     public ListNode insertionSortList(ListNode head) {
@@ -39,7 +32,7 @@ public class No147 {
         ListNode curr = head;       //current node to be inserted
         ListNode next = null;       //next node to be inserted
 
-        while (curr != null){
+        while (curr != null) {
             next = curr.next;
             // find the place to insert curr : pre.next >= curr
             while (pre.next != null && pre.next.val < curr.val)
@@ -60,11 +53,3 @@ public class No147 {
 
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-}
